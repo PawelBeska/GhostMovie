@@ -12,3 +12,7 @@
 */
 
 Route::get('/','IndexController@index')->name('home.index');
+
+Route::get('/login','Auth\LoginController@login')->name('home.login');
+Route::post('/login','Auth\LoginController@loginAjax')->name('home.login.ajax');
+Route::get('/register','Auth\RegisterController@register')->name('home.register');

@@ -306,6 +306,9 @@ ul {
 .header__nav-item.show .header__nav-link {
   color: #ff55a5;
 }
+ .header__nav-link> .icon{
+  margin-left: 5px;
+}
 .header__dropdown {
   position: relative;
   display: block;
@@ -4040,4 +4043,30 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   background-image: -webkit-linear-gradient(180deg, #ff55a5 0%, #ff5860 100%);
   background-image: -ms-linear-gradient(180deg, #ff55a5 0%, #ff5860 100%);
   background-image: linear-gradient(180deg, #ff55a5 0%, #ff5860 100%);
+}
+
+.isa_info, .isa_success, .isa_warning, .isa_error {
+  margin: 10px 0px;
+  padding:12px;
+
+}
+.isa_info {
+  color: #00529B;
+  background-color: #BDE5F8;
+}
+.isa_success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+}
+.isa_warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+}
+.isa_error {
+  color: #D8000C;
+}
+.isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+  margin:10px 22px;
+  font-size:2em;
+  vertical-align:middle;
 }

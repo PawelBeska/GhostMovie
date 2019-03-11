@@ -14,74 +14,49 @@
                         <ul class="header__nav">
                             <!-- dropdown -->
                             <li class="header__nav-item">
-                                <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuHome" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
-
-                                <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuHome">
-                                    <li><a href="index.html">Home slideshow bg</a></li>
-                                    <li><a href="index2.html">Home static bg</a></li>
-                                </ul>
+                                <a class="header__nav-link" href="#" role="button">Home</a>
                             </li>
                             <!-- end dropdown -->
 
                             <!-- dropdown -->
                             <li class="header__nav-item">
-                                <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog</a>
-
-                                <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
-                                    <li><a href="catalog1.html">Catalog Grid</a></li>
-                                    <li><a href="catalog2.html">Catalog List</a></li>
-                                    <li><a href="details1.html">Details Movie</a></li>
-                                    <li><a href="details2.html">Details TV Series</a></li>
-                                </ul>
+                                <a class="header__nav-link" href="#" role="button">Filmy</a>
                             </li>
                             <!-- end dropdown -->
 
                             <li class="header__nav-item">
-                                <a href="pricing.html" class="header__nav-link">Pricing Plan</a>
+                                <a href="pricing.html" class="header__nav-link">Seriale</a>
                             </li>
 
                             <li class="header__nav-item">
-                                <a href="faq.html" class="header__nav-link">Help</a>
+                                <a href="faq.html" class="header__nav-link">Pomoc</a>
                             </li>
 
-                            <!-- dropdown -->
-                            <li class="dropdown header__nav-item">
-                                <a class="dropdown-toggle header__nav-link header__nav-link--more" href="#" role="button" id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon ion-ios-more"></i></a>
 
-                                <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuMore">
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="profile.html">Profile</a></li>
-                                    <li><a href="signin.html">Sign In</a></li>
-                                    <li><a href="signup.html">Sign Up</a></li>
-                                    <li><a href="404.html">404 Page</a></li>
-                                </ul>
-                            </li>
-                            <!-- end dropdown -->
                         </ul>
                         <!-- end header nav -->
 
                         <!-- header auth -->
                         <div class="header__auth">
-                            <button class="header__search-btn" type="button">
-                                <i class="icon ion-ios-search"></i>
-                            </button>
 
-                            <!-- dropdown -->
-                            <div class="dropdown header__lang">
-                                <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">EN</a>
+                            @guest()
+                                <a href="signin.html" class="header__sign-in">
+                                    <i class="icon ion-ios-log-in"></i>
+                                    <span>Zarejestruj się</span>
+                                </a>
+                                @else
+                                <li class="header__nav-item">
+                                    <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}<i class="icon ion-ios-arrow-down"></i></a>
 
-                                <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuLang">
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">Spanish</a></li>
-                                    <li><a href="#">Russian</a></li>
-                                </ul>
-                            </div>
-                            <!-- end dropdown -->
+                                    <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
+                                        <li><a href="catalog1.html">Catalog Grid</a></li>
+                                        <li><a href="catalog2.html">Catalog List</a></li>
+                                        <li><a href="details1.html">Details Movie</a></li>
+                                        <li><a href="{{ route('logout') }}">Wyloguj</a></li>
+                                    </ul>
+                                </li>
+                                @endguest
 
-                            <a href="signin.html" class="header__sign-in">
-                                <i class="icon ion-ios-log-in"></i>
-                                <span>sign in</span>
-                            </a>
                         </div>
                         <!-- end header auth -->
 

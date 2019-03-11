@@ -20,11 +20,11 @@
     <link rel="stylesheet" href="{{URL::asset('assets/home/css/main.css')}}">
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="icon/favicon-32x32.png')}}" sizes="32x32">
-    <link rel="apple-touch-icon" href="icon/favicon-32x32.png')}}">
-    <link rel="apple-touch-icon" sizes="72x72" href="icon/apple-touch-icon-72x72.png')}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="icon/apple-touch-icon-114x114.png')}}">
-    <link rel="apple-touch-icon" sizes="144x144" href="icon/apple-touch-icon-144x144.png')}}">
+    <link rel="icon" type="image/png" href="{{URL::asset('assets/home/icon/favicon-32x32.png')}}" sizes="32x32">
+    <link rel="apple-touch-icon" href="{{URL::asset('assets/home/icon/favicon-32x32.png')}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{URL::asset('assets/home/icon/apple-touch-icon-72x72.png')}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{URL::asset('assets/home/icon/apple-touch-icon-114x114.png')}}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{URL::asset('assets/home/icon/apple-touch-icon-144x144.png')}}">
 
     <meta name="description" content="">
     <meta name="keywords" content="">
