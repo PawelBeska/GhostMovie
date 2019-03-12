@@ -15,6 +15,7 @@ Route::get('/','IndexController@index')->name('home.index');
 Route::group(['middleware' => ['auth']], function () {
  Route::get('/logout',function(\Illuminate\Http\Request $request){$request->session()->invalidate();return \Illuminate\Support\Facades\Redirect::to(route('home.index'));})->name('home.logout');
  Route::get('/user','UserController@user')->name('home.user');
+
 });
 
 Route::group(['middleware' => ['guest']], function () {
@@ -23,4 +24,6 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('/register','Auth\RegisterController@register')->name('home.register');
     Route::post('/register','Auth\RegisterController@registerAjax')->name('home.register.ajax');
 });
-
+Route::get('/movies','MoviesController@movies')->name('home.movies');
+Route::get('/series','SeriesController@series')->name('home.series');
+Route::get('/help','IndexController@help')->name('home.help');

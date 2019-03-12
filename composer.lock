@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f0d056e8412dec00cd22162f3edf1c7",
+    "content-hash": "9833e2e2638e75256503db57875e00cb",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1004,6 +1004,49 @@
                 "php"
             ],
             "time": "2019-02-16T20:54:15+00:00"
+        },
+        {
+            "name": "nsolutionspl/filmweb-api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/b44x/filmweb-api.git",
+                "reference": "a37aadcb213d9d27faaa9ed274d3f8795534a736"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/b44x/filmweb-api/zipball/a37aadcb213d9d27faaa9ed274d3f8795534a736",
+                "reference": "a37aadcb213d9d27faaa9ed274d3f8795534a736",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "nSolutions": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "nSolutions.pl",
+                    "email": "biuro@nsolutions.pl",
+                    "homepage": "http://www.nsolutions.pl/"
+                }
+            ],
+            "description": "Non-official API for Filmweb.pl",
+            "homepage": "https://github.com/nSolutionsPL/filmweb-api",
+            "keywords": [
+                "api",
+                "filmweb",
+                "movies"
+            ],
+            "time": "2018-07-16T16:21:38+00:00"
         },
         {
             "name": "opis/closure",
@@ -4466,7 +4509,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "nsolutionspl/filmweb-api": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

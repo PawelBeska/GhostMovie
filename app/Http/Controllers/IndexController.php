@@ -6,7 +6,10 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $view = view('home.pages.index.index');
-        return $view;
+        return view('home.pages.index.index');
+    }
+    public function help()
+    {
+
     }
 }

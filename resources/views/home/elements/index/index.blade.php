@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="home__title"><b>NAJNOWSZE</b> MATERIAŁY</h1>
+                <h1 class="home__title">{!!__('app.the_most_popular_materials')!!}</h1>
 
                 <button class="home__nav home__nav--prev" type="button">
                     <i class="icon ion-ios-arrow-round-back"></i>
@@ -120,25 +120,23 @@
             <div class="row">
                 <div class="col-12">
                     <!-- content title -->
-                    <h2 class="content__title">New items</h2>
+                    <h2 class="content__title">{!!__('app.latest_materials')!!}</h2>
                     <!-- end content title -->
 
                     <!-- content tabs nav -->
                     <ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">
+
+
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">NEW RELEASES</a>
+                            <a class="nav-link active" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">{!!__('app.movies')!!}</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">MOVIES</a>
+                            <a class="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">{!!__('app.tv_series')!!}</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">TV SERIES</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false">CARTOONS</a>
+                            <a class="nav-link" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false">{!!__('app.cartoons')!!}</a>
                         </li>
                     </ul>
                     <!-- end content tabs nav -->
@@ -1106,7 +1104,7 @@
                                 </a>
                             </div>
                             <div class="card__content">
-                                <h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
+                                <h3 class="card__title"><a h                                                                               ref="#">I Dream in Another Language</a></h3>
                                 <span class="card__category">
 										<a href="#">Action</a>
 										<a href="#">Triler</a>
@@ -1193,7 +1191,7 @@
         <div class="row">
             <!-- section title -->
             <div class="col-12">
-                <h2 class="section__title">Expected premiere</h2>
+                <h2 class="section__title">{!!__('app.the_most_expected')!!}</h2>
             </div>
             <!-- end section title -->
 
@@ -1338,7 +1336,7 @@
         <div class="row">
             <!-- section title -->
             <div class="col-12">
-                <h2 class="section__title section__title--no-margin">Our Partners</h2>
+                <h2 class="section__title section__title--no-margin">{!!__('app.our_partners')!!}</h2>
             </div>
             <!-- end section title -->
 

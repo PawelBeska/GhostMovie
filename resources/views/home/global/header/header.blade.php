@@ -14,22 +14,22 @@
                         <ul class="header__nav">
                             <!-- dropdown -->
                             <li class="header__nav-item">
-                                <a class="header__nav-link" href="#" role="button">Home</a>
+                                <a class="header__nav-link" href="{{route('home.index')}}" role="button">Home</a>
                             </li>
                             <!-- end dropdown -->
 
                             <!-- dropdown -->
                             <li class="header__nav-item">
-                                <a class="header__nav-link" href="#" role="button">Filmy</a>
+                                <a class="header__nav-link" href="{{route('home.movies')}}" role="button">Filmy</a>
                             </li>
                             <!-- end dropdown -->
 
                             <li class="header__nav-item">
-                                <a href="pricing.html" class="header__nav-link">Seriale</a>
+                                <a href="{{route('home.series')}}" class="header__nav-link">Seriale</a>
                             </li>
 
                             <li class="header__nav-item">
-                                <a href="faq.html" class="header__nav-link">Pomoc</a>
+                                <a href="{{route('home.help')}}" class="header__nav-link">Pomoc</a>
                             </li>
 
 
