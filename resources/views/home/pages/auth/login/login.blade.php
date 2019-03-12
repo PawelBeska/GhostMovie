@@ -104,16 +104,15 @@
                     $('#error').prepend('<div class="isa_error">' + data['error'] + ' </div>');
                 }
                 if(data['success']) {
-                    $('#error').prepend('   <div class="alert alert-sm alert-border-left alert-success alert-dismissable">\n' +
-                        '                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>\n' +
-                        '                                    <i class="fa fa-check pr10"></i> ' + data['success'] + ' </div>');
+                    $('#error').prepend('<div class="isa_success">' + data['success'] + ' </div>');
+                    location.reload();
                 }
             },
             error: function (data) {
                 $('#error').empty();
                 var l = JSON.parse(data.responseText);
                 var i = 0;
-                $.each(l['error'], function (heading, text) {
+                $.each(l['errors'], function (heading, text) {
                     i++;
                     $('#error').prepend('<div class="isa_error">' +text + ' </div>');
                 });

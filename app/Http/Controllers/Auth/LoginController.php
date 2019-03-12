@@ -16,13 +16,17 @@ class LoginController extends Controller
     }
     public function loginAjax(Request $request)
     {
+        $request ->validate([
+            'email' => 'required|string',
+            'password' => 'required|string'
+        ]);
         $message = new MessageBag();
         $input = $request->all();
         if (Auth::attempt(['email' => $input['email'], 'password' => $input['password']])) {
             $message->add('success', "Pomyślnie zalogowano!");
             return $message->jsonSerialize();
         }else{
-            $message->add('error', "Zły login lub hasło!");
+            $message->add('error', "Zły email lub hasło!");
             return $message->jsonSerialize();
         }
     }

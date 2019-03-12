@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +12,15 @@
 
 Route::get('/','IndexController@index')->name('home.index');
 
-Route::get('/login','Auth\LoginController@login')->name('home.login');
-Route::post('/login','Auth\LoginController@loginAjax')->name('home.login.ajax');
-Route::get('/register','Auth\RegisterController@register')->name('home.register');
+Route::group(['middleware' => ['auth']], function () {
+ Route::get('/logout',function(\Illuminate\Http\Request $request){$request->session()->invalidate();return \Illuminate\Support\Facades\Redirect::to(route('home.index'));})->name('home.logout');
+ Route::get('/user','UserController@user')->name('home.user');
+});
+
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/login','Auth\LoginController@login')->name('home.login');
+    Route::post('/login','Auth\LoginController@loginAjax')->name('home.login.ajax');
+    Route::get('/register','Auth\RegisterController@register')->name('home.register');
+    Route::post('/register','Auth\RegisterController@registerAjax')->name('home.register.ajax');
+});
+

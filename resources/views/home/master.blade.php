@@ -42,7 +42,7 @@
 <!-- footer -->
 @yield('footer')
 <!-- end footer -->
-
+</body>
 <!-- JS -->
 <script src="{{URL::asset('assets/home/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{URL::asset('assets/home/js/bootstrap.bundle.min.js')}}"></script>

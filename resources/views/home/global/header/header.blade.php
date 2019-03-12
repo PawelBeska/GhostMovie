@@ -5,7 +5,7 @@
                 <div class="col-12">
                     <div class="header__content">
                         <!-- header logo -->
-                        <a href="index.html" class="header__logo">
+                        <a href="{{route('home.index')}}" class="header__logo">
                             <img src="{{URL::asset('assets/home/img/logo.svg')}}" alt="">
                         </a>
                         <!-- end header logo -->
@@ -40,21 +40,16 @@
                         <div class="header__auth">
 
                             @guest()
-                                <a href="signin.html" class="header__sign-in">
+                                <a href="{{route('home.login')}}" class="header__sign-in">
                                     <i class="icon ion-ios-log-in"></i>
-                                    <span>Zarejestruj się</span>
+                                    <span>Zaloguj się</span>
                                 </a>
                                 @else
-                                <li class="header__nav-item">
-                                    <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}<i class="icon ion-ios-arrow-down"></i></a>
+                                <a href="{{route('home.user')}}" class="header__sign-in">
+                                    <i class="icon ion-ios-log-in"></i>
+                                    <span>{{Auth::user()->login}}</span>
+                                </a>
 
-                                    <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
-                                        <li><a href="catalog1.html">Catalog Grid</a></li>
-                                        <li><a href="catalog2.html">Catalog List</a></li>
-                                        <li><a href="details1.html">Details Movie</a></li>
-                                        <li><a href="{{ route('logout') }}">Wyloguj</a></li>
-                                    </ul>
-                                </li>
                                 @endguest
 
                         </div>
@@ -73,19 +68,4 @@
         </div>
     </div>
 
-    <!-- header search -->
-    <form action="#" class="header__search">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="header__search-content">
-                        <input type="text" placeholder="Search for a movie, TV Series that you are looking for">
-
-                        <button type="button">search</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    <!-- end header search -->
 </header>
