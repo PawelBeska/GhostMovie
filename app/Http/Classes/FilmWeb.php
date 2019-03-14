@@ -26,11 +26,13 @@ class FilmWeb
     public static function getMovies($title)
     {
         $para = explode('\af',substr(Evo::web('https://www.filmweb.pl/search/live?q='.urlencode($title))->getSiteContent(),1));
+        $movies = [];
         for($x=0;$x<count($para);$x++)
         {
             $para[$x] =  explode('\c',$para[$x]);
-            $para[$x][0]= 'https://www.filmweb.pl/film/'.urlencode($para[$x][5].'-'.$para[$x][6].'-'.$para[$x][1]);
+            $movies[$x]= \nSolutions\Filmweb::instance()->getFilmInfoFull($para[$x][1])->execute();
         }
-        return $para;
+
+        return $movies;
     }
 }
