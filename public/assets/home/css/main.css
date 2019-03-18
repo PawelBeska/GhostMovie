@@ -2398,6 +2398,7 @@ ul {
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 1px;
+    border: none;
 }
 .filter__btn:hover {
     opacity: 1;
@@ -3462,6 +3463,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     font-weight: 500;
     letter-spacing: 1px;
     margin: 20px auto 0;
+    border:none;
 }
 .sign__btn:hover {
     opacity: 1;

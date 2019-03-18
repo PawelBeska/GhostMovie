@@ -2,18 +2,55 @@
 
 namespace App\Http\Controllers;
 
-use App\Group;
 use App\Http\Classes\FilmWeb;
 use App\Movie;
 use App\Movies_genre;
+use Illuminate\Http\Request;
 
 class MoviesController extends Controller
 {
     public function movies()
     {
+
         return view('home.pages.movies.movies');
     }
-    public function moviesAjax()
+    public function moviesAjax(Request $request)
+    {
+        if($request->ajax()) {
+            $movies=null;
+            if($request->get('title'))
+            {
+                $movies = Movie::where('title','LIKE','%'.$request->get('title').'%')->orWhere('original_title','LIKE','%'.$request->get('title').'%')->with('movies_genre');
+            }
+            if($request->get('genre'))
+            {
+                if($movies)
+                    $movies->whereHas('movies_genre',function($query) use($request) {$query->where('name','=',$request->get('genre'));});
+                else
+                    $movies = Movie::whereHas('movies_genre',function($query) use($request) {$query->where('name','=',$request->get('genre'));})->with('movies_genre');
+            }
+            if($request->get('years_start')&&$request->get('years_end'))
+            {
+                if($movies)
+                    $movies->where('year','<=',$request->get('years_end'))->where('year','>=',$request->get('years_start'));
+                 else
+                  $movies =   Movie::where('year','<=',$request->get('years_end'))->where('year','>=',$request->get('years_start'))->with('movies_genre');
+            }
+            if($movies)
+                return $movies->paginate(2)->jsonSerialize();
+            else
+                return Movie::select('id', 'title', 'year', 'poster', 'rating')->with(['movies_genre'])->paginate(2)->jsonSerialize();
+        }
+        return   abort('403');
+    }
+    public function genresAjax(Request $request)
+    {
+        if($request->ajax()) {
+            return Movies_genre::distinct('name')->pluck('name')->jsonSerialize();
+        }
+        return  abort('403');
+    }
+    public function createMovies()
     {
         foreach (FilmWeb::getMovies('iron') as $movie) {
             $created_movie = Movie::create([
@@ -30,6 +67,15 @@ class MoviesController extends Controller
 
             if (isset($movie->video->videoUrl))
                 $created_movie->update(['video_url' => $movie->video->videoUrl]);
+            if(isset($movie->genres))
+            {
+                $genres = explode(',',$movie->genres);
+                foreach ($genres as $genre)
+                {
+                    Movies_genre::create(['name'=>$genre,'movie'=>$created_movie->id]);
+                }
+            }
+
         }
     }
 }

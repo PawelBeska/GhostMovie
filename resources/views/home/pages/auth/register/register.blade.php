@@ -68,7 +68,7 @@
                         {!! Form::password('password_confirmation',['class'=>'sign__input','placeholder'=>'Powtórz hasło','required']) !!}
                     </div>
 
-                    {!! Form::submit('Zaloguj się',['class'=>'sign__btn','style'=>'border:none;']) !!}
+                    {!! Form::submit('Zarejestruj się',['class'=>'sign__btn']) !!}
 
                     <span class="sign__text">Masz już konto? <a href="{{route('home.login')}}">Zaloguj się!</a></span>
                 {!! Form::close() !!}

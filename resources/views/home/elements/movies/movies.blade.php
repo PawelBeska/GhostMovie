@@ -29,78 +29,29 @@
                 <div class="filter__content">
                     <div class="filter__items">
                         <!-- filter item -->
+                        {!! Form::open(['url'=>route('home.movies.ajax'),'id'=>'filter','style'=>'display:contents;']) !!}
+
                         <div class="filter__item" id="filter__genre">
                             <span class="filter__item-label">{{__('app.genre')}}:</span>
 
+                            {!! Form::hidden('genre',null) !!}
+
                             <div class="filter__item-btn dropdown-toggle" role="navigation" id="filter-genre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <input type="button" value="Action/Adventure">
+                                <input type="button" value="Brak">
                                 <span></span>
                             </div>
 
-                            <ul class="filter__item-menu dropdown-menu scrollbar-dropdown" aria-labelledby="filter-genre">
-                                <li>Action/Adventure</li>
-                                <li>Animals</li>
-                                <li>Animation</li>
-                                <li>Biography</li>
-                                <li>Comedy</li>
-                                <li>Cooking</li>
-                                <li>Dance</li>
-                                <li>Documentary</li>
-                                <li>Drama</li>
-                                <li>Education</li>
-                                <li>Entertainment</li>
-                                <li>Family</li>
-                                <li>Fantasy</li>
-                                <li>History</li>
-                                <li>Horror</li>
-                                <li>Independent</li>
-                                <li>International</li>
-                                <li>Kids</li>
-                                <li>Kids & Family</li>
-                                <li>Medical</li>
-                                <li>Military/War</li>
-                                <li>Music</li>
-                                <li>Musical</li>
-                                <li>Mystery/Crime</li>
-                                <li>Nature</li>
-                                <li>Paranormal</li>
-                                <li>Politics</li>
-                                <li>Racing</li>
-                                <li>Romance</li>
-                                <li>Sci-Fi/Horror</li>
-                                <li>Science</li>
-                                <li>Science Fiction</li>
-                                <li>Science/Nature</li>
-                                <li>Spanish</li>
-                                <li>Travel</li>
-                                <li>Western</li>
+                            <ul class="filter__item-menu dropdown-menu scrollbar-dropdown" id="genres" aria-labelledby="filter-genre">
                             </ul>
                         </div>
                         <!-- end filter item -->
-
-                        <!-- filter item -->
-                        <div class="filter__item" id="filter__quality">
-                            <span class="filter__item-label">{{__('app.quality')}}:</span>
-
-                            <div class="filter__item-btn dropdown-toggle" role="navigation" id="filter-quality" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <input type="button" value="HD 1080">
-                                <span></span>
-                            </div>
-
-                            <ul class="filter__item-menu dropdown-menu scrollbar-dropdown" aria-labelledby="filter-quality">
-                                <li>HD 1080</li>
-                                <li>HD 720</li>
-                                <li>DVD</li>
-                                <li>TS</li>
-                            </ul>
-                        </div>
-                        <!-- end filter item -->
-
 
                         <!-- filter item -->
                         <div class="filter__item" id="filter__year">
                             <span class="filter__item-label">{{__('app.relase_year')}}:</span>
 
+                            {!! Form::hidden('years_start',null) !!}
+                            {!! Form::hidden('years_end',null) !!}
                             <div class="filter__item-btn dropdown-toggle" role="button" id="filter-year" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="filter__range">
                                     <div id="filter__years-start"></div>
@@ -117,11 +68,12 @@
                     </div>
                     <div class="filter__item" id="filter__year">
                         <span class="filter__item-label">Tytuł:</span>
-                        {!! Form::email('email',null,['class'=>'profile__input','style'=>'height:30px;font-size:13px']) !!}
+                        {!! Form::text('title',null,['class'=>'profile__input','style'=>'height:30px;font-size:13px']) !!}
                     </div>
                     <!-- filter btn -->
-                    <button class="filter__btn" type="button">Zastosuj</button>
+                    {!! Form::submit('Zastosuj',['class'=>'filter__btn']) !!}
                     <!-- end filter btn -->
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
@@ -129,32 +81,79 @@
 </div>
 <!-- end filter -->
 
+<div class="list-items"></div>
 <!-- catalog -->
 <div class="catalog">
     <div class="container">
-        <div class="row">
-            @foreach(\App\Movie::select('poster','id','title','rating')->get() as $movie)
-            <!-- card -->
-            <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-                <div class="card">
-                    <div class="card__cover">
-                        <img src="{{$movie->poster}}" alt="">
-                        <a href="#" class="card__play">
-                            <i class="icon ion-ios-play"></i>
-                        </a>
-                    </div>
-                    <div class="card__content">
-                        <h3 class="card__title"><a href="#">{{$movie->title}}</a></h3>
-                        <span class="card__category">
-								<a href="#">Action</a>
-								<a href="#">Triler</a>
-							</span>
-                        <span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-                    </div>
-                </div>
-            </div>
-            <!-- end card -->
-@endforeach
+        <div class="row" id="movies">
+        </div>
+     <script>
+         const Item = ({ id, poster, url, title,rating }) => ` <div class="col-6 col-sm-4 col-lg-3 col-xl-2"><div class="card"> <div class="card__cover"><img src="${poster}" alt=""/><a href="${url}" class="card__play"><i class="icon ion-ios-play"></i></a></div><div class="card__content"><h3 class="card__title"><a href="${url}">${title}</a></h3><span class="card__category" id="genres_${id}"></span><span class="card__rate"><i class="icon ion-ios-star"></i>${rating}</span></div></div></div>`;
+         $.ajax({
+             url: '/ajax/movies/genres',
+             type: 'POST',
+             data: {'_token':"{{csrf_token()}}"},
+             success: function (data) {
+                 $.each(data, function (heading, text) {
+                     $('#genres').prepend('<li>'+text+'</li>');
+                 });
+                 $('.scrollbar-dropdown').mCustomScrollbar({
+                     axis: "y",
+                     scrollbarPosition: "outside",
+                     theme: "custom-bar"
+                 });
+
+                 $('.accordion').mCustomScrollbar({
+                     axis: "y",
+                     scrollbarPosition: "outside",
+                     theme: "custom-bar2"
+                 });
+             },
+             error: function (data) {
+
+             }
+         });
+         $(document).ready(function () {
+             $.ajax({
+                 url: '/ajax/movies',
+                 type: 'POST',
+                 data: {'_token':"{{csrf_token()}}"},
+                 success: function (data) {
+                     console.log(data);
+                     $('div#movies').html('').prepend(data['data'].map(Item).join(''));
+                     $.each(data['data'], function (heading, text) {
+                         $.each(text['movies_genre'], function (genre_head, genre_text) {
+                             $('span#genres_'+text['id']).prepend('<a href="#">'+genre_text['name']+'</a>');
+                         });
+                     });
+                 },
+                 error: function (data) {
+
+                 }
+             });
+
+             var FILTER = $("form#filter");
+             FILTER.submit(function (e) {
+                 e.preventDefault();
+                 $.ajax({
+                     url: FILTER.attr('action'),
+                     type: 'POST',
+                     data: FILTER.serialize(),
+                     success: function (data) {
+                         $('div#movies').html('').prepend(data['data'].map(Item).join(''));
+                         $.each(data['data'], function (heading, text) {
+                             $.each(text['movies_genre'], function (genre_head, genre_text) {
+                                 $('span#genres_'+text['id']).prepend('<a href="#">'+genre_text['name']+'</a>');
+                             });
+                         });
+                     },
+                     error: function (data) {
+                      console.log('error');
+                     }
+                 });
+             });
+         });
+     </script>
             <!-- paginator -->
             <div class="col-12">
                 <ul class="paginator">

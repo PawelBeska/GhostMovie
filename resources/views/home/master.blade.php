@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{URL::asset('assets/home/css/bootstrap-reboot.min.css')}}'">
+    <link rel="stylesheet" href="{{URL::asset('assets/home/css/bootstrap-reboot.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets/home/css/bootstrap-grid.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets/home/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets/home/css/jquery.mCustomScrollbar.min.css')}}">
@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{URL::asset('assets/home/css/default-skin.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets/home/css/main.css')}}">
 
+
+    <script src="{{URL::asset('assets/home/js/jquery-3.3.1.min.js')}}"></script>
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="{{URL::asset('assets/home/icon/favicon-32x32.png')}}" sizes="32x32">
     <link rel="apple-touch-icon" href="{{URL::asset('assets/home/icon/favicon-32x32.png')}}">
@@ -44,7 +46,6 @@
 <!-- end footer -->
 </body>
 <!-- JS -->
-<script src="{{URL::asset('assets/home/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{URL::asset('assets/home/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{URL::asset('assets/home/js/owl.carousel.min.js')}}"></script>
 <script src="{{URL::asset('assets/home/js/jquery.mousewheel.min.js')}}"></script>

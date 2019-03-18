@@ -62,7 +62,7 @@
                         </div>
 
 
-                        {!! Form::submit('Zaloguj się',['class'=>'sign__btn','style'=>'border:none;']) !!}
+                        {!! Form::submit('Zaloguj się',['class'=>'sign__btn']) !!}
 
                         <span class="sign__text">Nie masz konta? <a href="{{route('home.register')}}">Zarejestruj się!</a></span>
 

@@ -137,6 +137,7 @@ $(document).ready(function () {
 		var item = $(this);
 		var id = item.closest('.filter__item').attr('id');
 		$('#'+id).find('.filter__item-btn input').val(text);
+		document.getElementsByName('genre')[0].value=text;
 	});
 
 	/*==============================
@@ -408,7 +409,10 @@ $(document).ready(function () {
 			];
 			firstSlider.noUiSlider.on('update', function( values, handle ) {
 				firstValues[handle].innerHTML = values[handle];
+				document.getElementsByName('years_start')[0].value=values[0];
+				document.getElementsByName('years_end')[0].value=values[1];
 			});
+
 		} else {
 			return false;
 		}

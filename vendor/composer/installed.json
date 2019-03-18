@@ -1565,6 +1565,51 @@
         ]
     },
     {
+        "name": "nsolutionspl/filmweb-api",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/b44x/filmweb-api.git",
+            "reference": "a37aadcb213d9d27faaa9ed274d3f8795534a736"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/b44x/filmweb-api/zipball/a37aadcb213d9d27faaa9ed274d3f8795534a736",
+            "reference": "a37aadcb213d9d27faaa9ed274d3f8795534a736",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2018-07-16T16:21:38+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "nSolutions": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "nSolutions.pl",
+                "email": "biuro@nsolutions.pl",
+                "homepage": "http://www.nsolutions.pl/"
+            }
+        ],
+        "description": "Non-official API for Filmweb.pl",
+        "homepage": "https://github.com/nSolutionsPL/filmweb-api",
+        "keywords": [
+            "api",
+            "filmweb",
+            "movies"
+        ]
+    },
+    {
         "name": "nunomaduro/collision",
         "version": "v2.1.1",
         "version_normalized": "2.1.1.0",

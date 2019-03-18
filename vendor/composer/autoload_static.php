@@ -333,6 +333,13 @@ class ComposerStaticInit247bc8e76cc05fa90a4a952d432c567a
     );
 
     public static $prefixesPsr0 = array (
+        'n' => 
+        array (
+            'nSolutions' => 
+            array (
+                0 => __DIR__ . '/..' . '/nsolutionspl/filmweb-api/src',
+            ),
+        ),
         'P' => 
         array (
             'Prophecy\\' => 
@@ -367,13 +374,19 @@ class ComposerStaticInit247bc8e76cc05fa90a4a952d432c567a
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
+        'App\\Group' => __DIR__ . '/../..' . '/app/Http/Models/Group.php',
+        'App\\Http\\Classes\\Evo\\Evo' => __DIR__ . '/../..' . '/app/Http/Classes/Evo/Evo.php',
+        'App\\Http\\Classes\\Evo\\Web\\Web' => __DIR__ . '/../..' . '/app/Http/Classes/Evo/Web/Web.php',
+        'App\\Http\\Classes\\FilmWeb' => __DIR__ . '/../..' . '/app/Http/Classes/FilmWeb.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
-        'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
-        'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndexController.php',
+        'App\\Http\\Controllers\\MovieController' => __DIR__ . '/../..' . '/app/Http/Controllers/MovieController.php',
+        'App\\Http\\Controllers\\MoviesController' => __DIR__ . '/../..' . '/app/Http/Controllers/MoviesController.php',
+        'App\\Http\\Controllers\\SerieController' => __DIR__ . '/../..' . '/app/Http/Controllers/SerieController.php',
+        'App\\Http\\Controllers\\SeriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/SeriesController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -382,6 +395,7 @@ class ComposerStaticInit247bc8e76cc05fa90a4a952d432c567a
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Permission' => __DIR__ . '/../..' . '/app/Http/Models/Permission.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -3910,6 +3924,18 @@ class ComposerStaticInit247bc8e76cc05fa90a4a952d432c567a
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'nSolutions\\API\\Methods' => __DIR__ . '/..' . '/nsolutionspl/filmweb-api/src/nSolutions/Filmweb/nSolutions/API/Methods.php',
+        'nSolutions\\API\\Methods\\Login' => __DIR__ . '/..' . '/nsolutionspl/filmweb-api/src/nSolutions/Filmweb/nSolutions/API/Methods/Login.php',
+        'nSolutions\\API\\Methods\\getFilmComments' => __DIR__ . '/..' . '/nsolutionspl/filmweb-api/src/nSolutions/Filmweb/nSolutions/API/Methods/getFilmComments.php',
+        'nSolutions\\API\\Methods\\getFilmDescription' => __DIR__ . '/..' . '/nsolutionspl/filmweb-api/src/nSolutions/Filmweb/nSolutions/API/Methods/getFilmDescription.php',
+        'nSolutions\\API\\Methods\\getFilmImages' => __DIR__ . '/..' . '/nsolutionspl/filmweb-api/src/nSolutions/Filmweb/nSolutions/API/Methods/getFilmImages.php',
+        'nSolutions\\API\\Methods\\getFilmInfoFull' => __DIR__ . '/..' . '/nsolutionspl/filmweb-api/src/nSolutions/Filmweb/nSolutions/API/Methods/getFilmInfoFull.php',
+        'nSolutions\\API\\Methods\\getFilmPersons' => __DIR__ . '/..' . '/nsolutionspl/filmweb-api/src/nSolutions/Filmweb/nSolutions/API/Methods/getFilmPersons.php',
+        'nSolutions\\API\\Methods\\getFilmReview' => __DIR__ . '/..' . '/nsolutionspl/filmweb-api/src/nSolutions/Filmweb/nSolutions/API/Methods/getFilmReview.php',
+        'nSolutions\\API\\Methods\\getFilmVideos' => __DIR__ . '/..' . '/nsolutionspl/filmweb-api/src/nSolutions/Filmweb/nSolutions/API/Methods/getFilmVideos.php',
+        'nSolutions\\API\\Methods\\getUserFilmVotes' => __DIR__ . '/..' . '/nsolutionspl/filmweb-api/src/nSolutions/Filmweb/nSolutions/API/Methods/getUserFilmVotes.php',
+        'nSolutions\\Filmweb' => __DIR__ . '/..' . '/nsolutionspl/filmweb-api/src/nSolutions/Filmweb.php',
+        'nSolutions\\Request' => __DIR__ . '/..' . '/nsolutionspl/filmweb-api/src/nSolutions/Filmweb/nSolutions/Request.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',
