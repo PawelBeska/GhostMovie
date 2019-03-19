@@ -10,6 +10,10 @@ class Movie extends Model
     ];
     public function movies_genre()
     {
-      return  $this->hasMany('App\Movies_genre','movie','id');
+        return  $this->hasMany('App\Movies_genre','movie','id');
+    }
+    public function url()
+    {
+        $this->put('url', urlencode(str_replace(' ','_','/movie/'.$this->title.'/'.$this->id)));
     }
 }

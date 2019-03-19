@@ -25,6 +25,7 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('/register','Auth\RegisterController@registerAjax')->name('home.register.ajax');
 });
 Route::get('/movies','MoviesController@movies')->name('home.movies');
+Route::get('/movie/{title}/{id}','MovieController@movie')->name('home.movie');
 
 Route::get('/series','SeriesController@series')->name('home.series');
 Route::get('/help','IndexController@help')->name('home.help');

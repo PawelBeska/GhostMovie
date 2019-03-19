@@ -50,8 +50,8 @@
                         <div class="filter__item" id="filter__year">
                             <span class="filter__item-label">{{__('app.relase_year')}}:</span>
 
-                            {!! Form::hidden('years_start',null) !!}
-                            {!! Form::hidden('years_end',null) !!}
+                            {!! Form::hidden('years_start',2000) !!}
+                            {!! Form::hidden('years_end',2019) !!}
                             <div class="filter__item-btn dropdown-toggle" role="button" id="filter-year" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="filter__range">
                                     <div id="filter__years-start"></div>
@@ -88,7 +88,7 @@
         <div class="row" id="movies">
         </div>
      <script>
-         const Item = ({ id, poster, url, title,rating }) => ` <div class="col-6 col-sm-4 col-lg-3 col-xl-2"><div class="card"> <div class="card__cover"><img src="${poster}" alt=""/><a href="${url}" class="card__play"><i class="icon ion-ios-play"></i></a></div><div class="card__content"><h3 class="card__title"><a href="${url}">${title}</a></h3><span class="card__category" id="genres_${id}"></span><span class="card__rate"><i class="icon ion-ios-star"></i>${rating}</span></div></div></div>`;
+         const Item = ({ id, poster, url, title,rating }) => ` <div class="col-6 col-sm-4 col-lg-3 col-xl-2"><div class="card"> <div class="card__cover"><img src="${poster}" alt=""/><a href="${'/movie/'+title.split(' ').join('_')+'/'+id}" class="card__play"><i class="icon ion-ios-play"></i></a></div><div class="card__content"><h3 class="card__title"><a href="${'/movie/'+title.split(' ').join('_')+'/'+id}">${title}</a></h3><span class="card__category" id="genres_${id}"></span><span class="card__rate"><i class="icon ion-ios-star"></i>${rating}</span></div></div></div>`;
          $.ajax({
              url: '/ajax/movies/genres',
              type: 'POST',
@@ -114,23 +114,8 @@
              }
          });
          $(document).ready(function () {
-             $.ajax({
-                 url: '/ajax/movies',
-                 type: 'POST',
-                 data: {'_token':"{{csrf_token()}}"},
-                 success: function (data) {
-                     console.log(data);
-                     $('div#movies').html('').prepend(data['data'].map(Item).join(''));
-                     $.each(data['data'], function (heading, text) {
-                         $.each(text['movies_genre'], function (genre_head, genre_text) {
-                             $('span#genres_'+text['id']).prepend('<a href="#">'+genre_text['name']+'</a>');
-                         });
-                     });
-                 },
-                 error: function (data) {
 
-                 }
-             });
+
 
              var FILTER = $("form#filter");
              FILTER.submit(function (e) {
@@ -140,35 +125,32 @@
                      type: 'POST',
                      data: FILTER.serialize(),
                      success: function (data) {
+                         console.log(data)
                          $('div#movies').html('').prepend(data['data'].map(Item).join(''));
                          $.each(data['data'], function (heading, text) {
                              $.each(text['movies_genre'], function (genre_head, genre_text) {
                                  $('span#genres_'+text['id']).prepend('<a href="#">'+genre_text['name']+'</a>');
                              });
                          });
+                         $('ul.paginator').html(data[0]);
                      },
                      error: function (data) {
                       console.log('error');
                      }
                  });
+
              });
+             FILTER.submit();
          });
      </script>
             <!-- paginator -->
-            <div class="col-12">
-                <ul class="paginator">
-                    <li class="paginator__item paginator__item--prev">
-                        <a href="#"><i class="icon ion-ios-arrow-back"></i></a>
-                    </li>
-                    <li class="paginator__item"><a href="#">1</a></li>
-                    <li class="paginator__item paginator__item--active"><a href="#">2</a></li>
-                    <li class="paginator__item"><a href="#">3</a></li>
-                    <li class="paginator__item"><a href="#">4</a></li>
-                    <li class="paginator__item paginator__item--next">
-                        <a href="#"><i class="icon ion-ios-arrow-forward"></i></a>
-                    </li>
-                </ul>
-            </div>
+        <div class="col-12" style="text-align: center;">
+        <ul class="paginator">
+
+        </ul>
+    </div>
+
+
             <!-- end paginator -->
         </div>
     </div>
@@ -176,7 +158,7 @@
 <!-- end catalog -->
 
 <!-- expected premiere -->
-<section class="section section--bg" data-bg="{{URL::asset('assets/home/img/section/section.jpg')}}">
+<section class="section section--bg" style="z-index: -3;" data-bg="{{URL::asset('assets/home/img/section/section.jpg')}}">
     <div class="container">
         <div class="row">
             <!-- section title -->

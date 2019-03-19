@@ -12,6 +12,7 @@ class MoviesController extends Controller
     public function movies()
     {
 
+
         return view('home.pages.movies.movies');
     }
     public function moviesAjax(Request $request)
@@ -36,10 +37,12 @@ class MoviesController extends Controller
                  else
                   $movies =   Movie::where('year','<=',$request->get('years_end'))->where('year','>=',$request->get('years_start'))->with('movies_genre');
             }
-            if($movies)
-                return $movies->paginate(2)->jsonSerialize();
-            else
-                return Movie::select('id', 'title', 'year', 'poster', 'rating')->with(['movies_genre'])->paginate(2)->jsonSerialize();
+            if($movies) $v = $movies->paginate(12);
+            else $v = Movie::select('id', 'title', 'year', 'poster', 'rating')->with(['movies_genre'])->paginate(12);
+
+            $s = $v->jsonSerialize();
+            array_push($s, (string)$v->render('home.elements.movies.moviesAjax'));
+            return $s;
         }
         return   abort('403');
     }
@@ -52,7 +55,7 @@ class MoviesController extends Controller
     }
     public function createMovies()
     {
-        foreach (FilmWeb::getMovies('iron') as $movie) {
+        foreach (FilmWeb::getMovies('mechanic') as $movie) {
             $created_movie = Movie::create([
                 'title' => $movie->title,
                 'original_title' => $movie->originalTitle,

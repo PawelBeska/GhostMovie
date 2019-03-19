@@ -1352,14 +1352,14 @@ ul {
 }
 .card__cover {
     position: relative;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    -webkit-transition: 0.4s ease;
+    box-shadow: inset 0px 0px 40px rgba(0,0,0,0.9);
     -moz-transition: 0.4s ease;
     transition: 0.4s ease;
 }
 .card__cover img {
     width: 100%;
+    position: relative;
+    z-index: -2;
 }
 .card__cover:before {
     content: '';
@@ -2527,7 +2527,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 	Paginator
 ==============================*/
 .paginator {
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -2538,7 +2538,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     -webkit-border-radius: 4px;
     border-radius: 4px;
     height: 50px;
-    width: 290px;
+    width: auto;
 }
 .paginator__item {
     margin: 0;
@@ -2586,7 +2586,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 @media (min-width: 360px) {
     .paginator {
-        width: 300px;
+        /* width: 300px; */
     }
 }
 @media (min-width: 768px) {
