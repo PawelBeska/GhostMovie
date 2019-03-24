@@ -65,7 +65,7 @@ class MoviesController extends Controller
                 'premiere_country' => $movie->premiereCountry,
                 'rating' => $movie->avgRate,
                 'duration' => $movie->duration,
-                'country' => $movie->premiereCountry,
+                'country' => $movie->country,
                 'description' => substr($movie->desciption, 0, 255)]);
 
             if (isset($movie->video->videoUrl))

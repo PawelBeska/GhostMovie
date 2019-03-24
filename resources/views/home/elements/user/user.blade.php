@@ -48,6 +48,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Subscription</a>
                             </li>
+                            @if(\Illuminate\Support\Facades\Auth::user()->hasPermission('admin'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.index')}}">Panel administratora</a>
+                                </li>
+                            @endif
                         </ul>
                         <!-- end content tabs nav -->
 
@@ -115,7 +120,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <button class="profile__btn" type="button">Save</button>
+                                    {!! Form::submit('Edytuj',['class'=>'profile__btn']) !!}
                                 </div>
                             </div>
                        {!! Form::close() !!}

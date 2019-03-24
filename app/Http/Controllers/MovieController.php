@@ -9,7 +9,8 @@ class MovieController extends Controller
 {
     public function movie($title,$id)
     {
+        //return Movie::where('id',$id)->with('movies_genre')->first();
 
-        return view('home.pages.movie.movie')->with('movie',Movie::find($id));
+        return view('home.pages.movie.movie')->with('movie',Movie::where('id',$id)->with('movies_genre')->first());
     }
 }

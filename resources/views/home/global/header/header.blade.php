@@ -6,7 +6,7 @@
                     <div class="header__content">
                         <!-- header logo -->
                         <a href="{{route('home.index')}}" class="header__logo">
-                            <img src="{{URL::asset('assets/home/img/logo.svg')}}" alt="">
+                            <img src="{{URL::asset('assets/home/img/logo.png')}}" alt="">
                         </a>
                         <!-- end header logo -->
 

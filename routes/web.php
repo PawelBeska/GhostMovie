@@ -18,6 +18,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 });
 
+Route::group(['middleware' => ['admin']],function(){
+   Route::get('/admin','Admin\IndexController@index')->name('admin.index');
+});
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login','Auth\LoginController@login')->name('home.login');
     Route::post('/login','Auth\LoginController@loginAjax')->name('home.login.ajax');
