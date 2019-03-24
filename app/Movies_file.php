@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Movie_file extends Model
+class Movies_file extends Model
 {
     protected $fillable = ['id','size','remote','server','status','embed','author','remote_source','source','poster'];
 
@@ -18,6 +18,6 @@ class Movie_file extends Model
     }
     public function views()
     {
-        return $this->hasMany('App\Movie_view',  'movie','id')->get();
+        return $this->hasMany('App\Movies_view',  'movie','id')->get();
     }
 }
